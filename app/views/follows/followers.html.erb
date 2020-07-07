@@ -1,0 +1,22 @@
+<h1>Follows#followers</h1>
+
+<div class="">
+  <div class="twt-header-compose">
+
+    <span>Followers</span>
+    <span class="w-30">
+    </span>
+  </div>
+  <% @followers.each do |follow| %>
+    <div class="twt-content">
+      <span>
+        <% user_decorator = decorate(follow.follower) %>
+        <b><%= user_decorator.full_name %></b>
+        <b><%= link_to user_decorator.user_name, user_own_tweets_path(follow.follower) %></b>
+        <i><%= time_ago_in_words(follow.follower.created_at) %></i>
+        <b><%= link_to("Follow", follows_path(follow: {user_id: follow.follower.username, follower_id: current_user.id, username: follow.follower.username}), method: :post) unless current_user.following.pluck(:user_id).include? follow.follower.id %></b>
+      </span>
+    </div>
+
+  <% end %>
+</div>

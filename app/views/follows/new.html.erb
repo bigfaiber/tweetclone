@@ -1,4 +1,4 @@
-<h1>Tweets#new</h1>
+
 <div class="twt-container">
   <div class="twt-header-compose">
     <%= link_to root_path, class: 'w-30' do %>
@@ -6,19 +6,21 @@
         Back
       </span>
     <% end %>
-    <span>COMPOSE NEW TWEET</span>
+    <span>Follow</span>
     <span class="w-30">
     </span>
   </div>
 
   <div class="twt-content-new">
-    <%= form_for @tweet do |form| %>
-      <%= form.text_area :body , cols: '80', rows: '5', placeholder: "What's happening?"%><br />
+    <%= form_for @follow do |form| %>
+      <%= form.text_field :user_id , placeholder: "enter username"%><br />
       <div class="">
-        <%= form.submit 'Tweet', class: 'twt-btn' %>
+        <%= form.submit 'Follow', class: 'twt-btn' %>
       </div>
     <% end %>
   </div>
 </div>
-
-
+<div>
+  <br/>
+    <%= render partial: 'following' %>
+</div>

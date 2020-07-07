@@ -26,7 +26,7 @@ class TweetsController < ApplicationController
       message = {success: "Successfully created"}
       redirect_to root_path, flash: message
     else
-      message =  {error: tweet.errors.full_messages.to_sentence}
+      message =  {alert: tweet.errors.full_messages.to_sentence}
       redirect_to new_tweets_path, flash: message
     end
   end

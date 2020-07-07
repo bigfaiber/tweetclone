@@ -1,0 +1,17 @@
+<div class="">
+  <div class="twt-header-compose">
+
+    <span>Following</span>
+    <span class="w-30">
+    </span>
+  </div>
+  <% @following.each do |followed| %>
+    <div class="twt-content">
+      <span>
+        <b><%= followed.user.username %></b>
+        <i><%= time_ago_in_words(followed.created_at) %></i>
+      </span>
+    </div>
+
+  <% end %>
+</div>

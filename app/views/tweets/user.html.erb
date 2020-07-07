@@ -1,3 +1,17 @@
-<h1>Tweets#user</h1>
+<h1>Tweets@<%= @user.username %></h1>
 <%= @tweets.size %>
+<div class="">
+  <% @tweets.each do |tweet| %>
+    <div class="twt-content">
+      <span>
+        <b><%= tweet.user.username %></b>
+        <i><%= time_ago_in_words(tweet.created_at) %></i>
+      </span>
+      <p>
+        <%= tweet.body %>
+      </p>
+    </div>
+
+  <% end %>
+</div>
 <p>Find me in app/views/tweets/user.html.erb</p>

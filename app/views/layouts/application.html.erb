@@ -17,8 +17,11 @@
     <p class="navbar-text float-right">
       <% if user_signed_in? %>
         <%= link_to "Home", root_path %> |
-        <strong><%=link_to("@" + current_user.username, user_own_tweets_path(current_user)) %></strong>
+        <strong><%=link_to( decorate(current_user).user_name, user_own_tweets_path(current_user)) %></strong>
         <%= link_to "TWEET!", new_tweets_path %>
+        <%= link_to "Follow another user!", new_follow_path %>
+        <%= link_to "Followers: #{current_user.followers.size}", follows_followers_path %> |
+        <%= link_to "Following: #{current_user.following.size}", follows_following_path %> |
         <%= link_to "Edit profile", edit_user_registration_path, :class => 'navbar-link' %> |
         <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
       <% else %>
