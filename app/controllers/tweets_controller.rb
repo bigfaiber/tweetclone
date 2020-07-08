@@ -4,7 +4,7 @@ class TweetsController < ApplicationController
 
   def index
     @tweets = Tweet.where(user_id: (current_user.followed_ids << current_user.id)).order(created_at: :desc) if user_signed_in?
-    @pagy, @records = pagy(@tweets)
+    @pagy, @records = pagy(@tweets) if user_signed_in?
   end
 
   def user

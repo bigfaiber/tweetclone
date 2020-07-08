@@ -20,6 +20,6 @@
       <% end %>
       <% end %>
   </div>
-  <%== pagy_nav(@pagy) %>
+  <%== pagy_nav(@pagy) if user_signed_in?%>
 
 </div>
