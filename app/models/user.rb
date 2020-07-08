@@ -15,6 +15,13 @@ class User < ApplicationRecord
     followers.sort_by { |f| "#{f.follower.first_name} + #{f.follower.last_name}"}
   end
 
+  def sorted_following
+    following.sort_by { |f| "#{f.user.first_name} + #{f.user.last_name}"}
+  end
+
+  def is_follower? user_id
+    following.pluck(:user_id).include? user_id
+  end
 
   def to_param
     username

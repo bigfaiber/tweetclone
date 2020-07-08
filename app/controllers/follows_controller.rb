@@ -3,7 +3,7 @@ class FollowsController < ApplicationController
 
   def new
     @follow = Follow.new
-    @following = current_user.following
+    @following = current_user.sorted_following
   end
   def create
     followed = User.find_by(username: follow_params[:user_id])
@@ -23,7 +23,7 @@ class FollowsController < ApplicationController
   end
 
   def following
-    @following = current_user.following
+    @following = current_user.sorted_following
   end
 
   def follow_params

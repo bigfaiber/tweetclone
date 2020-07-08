@@ -1,15 +1,18 @@
 <div class="">
+  <h1>Following</h1>
   <div class="twt-header-compose">
 
     <span>Following</span>
     <span class="w-30">
     </span>
   </div>
-  <% @following.each do |followed| %>
+  <% following.each do |follow| %>
     <div class="twt-content">
       <span>
-        <b><%= followed.user.username %></b>
-        <i><%= time_ago_in_words(followed.created_at) %></i>
+        <% user_decorator = decorate(follow.user) %>
+        <b><%= user_decorator.full_name %></b>
+        <b><%= link_to user_decorator.user_name, user_own_tweets_path(follow.user) %></b>
+        <i><%= time_ago_in_words(follow.created_at) %></i>
       </span>
     </div>
 
