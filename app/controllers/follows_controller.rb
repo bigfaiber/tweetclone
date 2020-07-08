@@ -19,11 +19,13 @@ class FollowsController < ApplicationController
   end
 
   def followers
-    @followers = current_user.sorted_followers
+    @user = User.find_by(username: params[:username])
+    @followers = @user.sorted_followers
   end
 
   def following
-    @following = current_user.sorted_following
+    @user = User.find_by(username: params[:username])
+    @following = @user.sorted_following
   end
 
   def follow_params

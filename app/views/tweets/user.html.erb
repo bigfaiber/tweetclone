@@ -1,6 +1,9 @@
 <h1>Tweets@<%= @user.username %></h1>
-<!--<%#= link_to "Followers: #{@user.followers.size}", follows_followers_tweets_path(@user) %> |-->
-<%= @tweets.size %>
+<%= link_to "Followers: #{@user.followers.size}", follows_followers_path(@user) %> |
+<%= link_to "Following: #{@user.following.size}", follows_following_path(@user) %> |
+<%= link_to("Follow", follows_path(follow: {user_id: @user.username, follower_id: current_user.id,
+                                            username: @user.username}), method: :post) unless (@user == current_user || current_user.is_follower?(@user.id)) %> |
+Tweets: <%= @tweets.size %>
 <div class="">
   <% @tweets.each do |tweet| %>
     <div class="twt-content">
