@@ -1,9 +1,9 @@
 FactoryBot.define do
   factory :user do
-    email { "MyString@mystring.com" }
+    email { "test-#{rand(1..99999).to_s.rjust(3, "0")}@mystring.com" }
     first_name { "MyString" }
     last_name { "MyString" }
-    username { "MyString" }
+    username { "test-#{rand(1..99999).to_s.rjust(3, "0") }"}
     password { "boooooooo"}
   end
 end

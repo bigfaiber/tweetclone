@@ -1,9 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  before(:each) do
-    @tweet = create :user
-  end
   describe "validations" do
     it "should have an email" do
       should validate_presence_of(:email)
