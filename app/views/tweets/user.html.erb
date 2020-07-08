@@ -5,7 +5,7 @@
                                             username: @user.username}), method: :post) unless (@user == current_user || current_user.is_follower?(@user.id)) %> |
 Tweets: <%= @tweets.size %>
 <div class="">
-  <% @tweets.each do |tweet| %>
+  <% @records.each do |tweet| %>
     <div class="twt-content">
       <span>
         <% user_decorator = decorate(tweet.user) %>
@@ -20,4 +20,4 @@ Tweets: <%= @tweets.size %>
 
   <% end %>
 </div>
-<p>Find me in app/views/tweets/user.html.erb</p>
+<%== pagy_nav(@pagy) %>

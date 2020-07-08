@@ -4,7 +4,7 @@
 
   <div class="">
     <% if user_signed_in? %>
-      <% @tweets.each do |tweet| %>
+      <% @records.each do |tweet| %>
         <div class="twt-content">
         <span>
           <% user_decorator = decorate(tweet.user) %>
@@ -20,5 +20,6 @@
       <% end %>
       <% end %>
   </div>
+  <%== pagy_nav(@pagy) %>
 
 </div>
