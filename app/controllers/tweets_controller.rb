@@ -4,6 +4,7 @@ class TweetsController < ApplicationController
 
   def index
     @tweets = Tweet.where(user_id: (current_user.followed_ids << current_user.id)).order(created_at: :desc) if user_signed_in?
+    @pagy, @records = pagy(@tweets)
   end
 
   def user
@@ -13,6 +14,7 @@ class TweetsController < ApplicationController
       redirect_to root_path, flash: message
     end
     @tweets = Tweet.by_user(@user&.id).order(created_at: :desc)
+    @pagy, @records = pagy(@tweets)
   end
 
   def new

@@ -4,6 +4,7 @@ class FollowsController < ApplicationController
   def new
     @follow = Follow.new
     @following = current_user.sorted_following
+    @pagy, @records = pagy_array(@following)
   end
   def create
     followed = User.find_by(username: follow_params[:user_id])
@@ -21,11 +22,13 @@ class FollowsController < ApplicationController
   def followers
     @user = User.find_by(username: params[:username])
     @followers = @user.sorted_followers
+    @pagy, @records = pagy_array(@followers)
   end
 
   def following
     @user = User.find_by(username: params[:username])
     @following = @user.sorted_following
+    @pagy, @records = pagy_array(@following)
   end
 
   def follow_params
