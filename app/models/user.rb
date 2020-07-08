@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   validates :email, uniqueness: true
   validates :username, uniqueness: true
+  validates_presence_of :first_name, :last_name
 
   has_many :tweets, dependent: :destroy
   has_many :followers, :class_name => 'Follow', :foreign_key => 'user_id'
