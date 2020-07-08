@@ -15,7 +15,7 @@
         <b><%= link_to user_decorator.user_name, user_own_tweets_path(follow.follower) %></b>
         <i><%= time_ago_in_words(follow.created_at) %></i>
         <b><%= link_to("Follow", follows_path(follow: {user_id: follow.follower.username, follower_id: current_user.id,
-                                                       username: follow.follower.username}), method: :post) unless current_user.is_follower? follow.follower.id %></b>
+                                                       username: follow.follower.username}), method: :post) unless (follow.follower == current_user || current_user.is_follower?(follow.follower.id)) %></b>
       </span>
     </div>
 

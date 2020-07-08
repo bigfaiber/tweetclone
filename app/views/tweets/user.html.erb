@@ -8,8 +8,10 @@ Tweets: <%= @tweets.size %>
   <% @tweets.each do |tweet| %>
     <div class="twt-content">
       <span>
-        <b><%= tweet.user.username %></b>
-        <i><%= time_ago_in_words(tweet.created_at) %></i>
+        <% user_decorator = decorate(tweet.user) %>
+        <b><%= user_decorator.full_name %>,</b>
+        <%= user_decorator.user_name %> -
+        <i><%= tweet.created_at %></i>
       </span>
       <p>
         <%= tweet.body %>

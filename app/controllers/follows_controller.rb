@@ -10,7 +10,7 @@ class FollowsController < ApplicationController
     follow = Follow.new(user_id: followed&.id)
     follow.follower = current_user
     if follow.save
-      message = {success: "Successfully followed"}
+      message = {success: "Successfully followed #{followed.username}"}
       redirect_to user_own_tweets_path(followed), flash: message
     else
       message =  {alert: follow.errors.full_messages.to_sentence}

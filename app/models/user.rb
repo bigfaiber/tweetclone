@@ -11,6 +11,10 @@ class User < ApplicationRecord
   has_many :followers, :class_name => 'Follow', :foreign_key => 'user_id'
   has_many :following, :class_name => 'Follow', :foreign_key => 'follower_id'
 
+  def followed_ids
+    following.pluck(:user_id)
+  end
+
   def sorted_followers
     followers.sort_by { |f| "#{f.follower.first_name} + #{f.follower.last_name}"}
   end

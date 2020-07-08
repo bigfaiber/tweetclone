@@ -3,7 +3,7 @@ class TweetsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index]
 
   def index
-    @tweets = Tweet.all.order(created_at: :desc).limit(10)
+    @tweets = Tweet.where(user_id: (current_user.followed_ids << current_user.id)).order(created_at: :desc) if user_signed_in?
   end
 
   def user
@@ -12,7 +12,7 @@ class TweetsController < ApplicationController
       message = {error: "User does not exist"}
       redirect_to root_path, flash: message
     end
-    @tweets = Tweet.by_user(@user&.id).order(created_at: :desc).limit(10)
+    @tweets = Tweet.by_user(@user&.id).order(created_at: :desc)
   end
 
   def new

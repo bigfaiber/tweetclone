@@ -1,2 +1,24 @@
-<h1>Tweets#index</h1>
-<p>Find me in app/views/tweets/index.html.erb</p>
+<div class="twt-container">
+
+
+
+  <div class="">
+    <% if user_signed_in? %>
+      <% @tweets.each do |tweet| %>
+        <div class="twt-content">
+        <span>
+          <% user_decorator = decorate(tweet.user) %>
+          <b><%= user_decorator.full_name %>,</b>
+          <%= user_decorator.user_name %>
+          <i><%= tweet.created_at %></i>
+        </span>
+          <p>
+            <%= tweet.body %>
+          </p>
+        </div>
+
+      <% end %>
+      <% end %>
+  </div>
+
+</div>
